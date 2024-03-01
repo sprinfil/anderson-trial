@@ -1,0 +1,12 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto;
+    padding-bottom: 80px;
+}
+.contenedor-main{
+    flex-grow: 1;
+    width: 100%;
+
+}

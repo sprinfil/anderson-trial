@@ -1,0 +1,43 @@
+a{
+    text-decoration: none;
+}
+
+.contenedor-tarjetas{
+    display: flex;
+    padding: 40px 40px 40px 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    flex-wrap: wrap;
+
+}
+
+.tarjeta{
+    height: 300px;
+    width: 400px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta p {
+    font-size: 30px;
+}
+
+.icono-home{
+    width: 250px;
+}
+
+.tarjeta:hover{
+    color: #757575;
+    transition:  0.3s ease;
+    cursor: pointer;
+}
+
+.tarjeta:not(:hover) {
+    color: black;
+    transition:  0.3s ease;
+}
