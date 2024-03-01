@@ -38,6 +38,10 @@
     align-items: center;
     justify-content: center;
 }
+.contenedor-formulario form{
+   min-width: 80%;
+}
+
 
 @media (max-width: 1248px) {
     .contenedor-imagen{
