@@ -92,6 +92,7 @@ class ProyectosController{
                 $tarea->usuario_id = $_POST['usuario_id'];
                 $tarea->fecha_finalziar = $_POST['fecha_finalziar'];
                 $tarea->proyecto_id = $_GET['proyecto_id'];
+                $tarea->finalizada = "FALSE";
                
                 if($tarea->save()){
                     //TAREA CREADA CON EXITO
@@ -109,7 +110,7 @@ class ProyectosController{
     }
 
     public function eliminar_tarea(){
-        if(!empty($_GET['tarea_id']) && !empty($_GET['proyecto_id'])){
+        if(!empty($_GET['tarea_id']) && !empty($_GET['proyecto_id']) && empty($_GET['completar'])){
             $tarea = new Tarea();
             $tarea->find($_GET['tarea_id']);
             $tarea->delete();

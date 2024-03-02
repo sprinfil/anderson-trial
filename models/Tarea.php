@@ -6,6 +6,7 @@ class Tarea{
     public $usuario_id;
     public $fecha_finalziar;
     public $proyecto_id;
+    public $finalizada;
 
     public function __construct() {
 
@@ -17,9 +18,10 @@ class Tarea{
         $datos = $sql->fetch_object();
         $this->id = $datos->id;
         $this->nombre = $datos->nombre;
-        $this->usuario_id = $datos->nombre;
+        $this->usuario_id = $datos->usuario_id;
         $this->fecha_finalziar = $datos->fecha_finalziar;
         $this->proyecto_id = $datos->proyecto_id;
+        $this->finalizada = $datos->finalizada;
     }
 
     public function save(){
@@ -29,18 +31,20 @@ class Tarea{
             $usuario_id = $this->usuario_id;
             $fecha_finalziar = $this->fecha_finalziar;
             $proyecto_id = $this->proyecto_id;
+            $finalizada = $this->finalizada;
 
-            $consulta = $bd->conexion->prepare("UPDATE tareas SET nombre = ?, fecha_finalziar = ?, proyecto_id = ?, usuario_id = ? WHERE id = ?");
-            $consulta->bind_param("ssii", $nombre, $fecha_finalziar, $proyecto_id, $usuario_id);
+            $consulta = $bd->conexion->prepare("UPDATE tareas SET nombre = ?, fecha_finalziar = ?, proyecto_id = ?, usuario_id = ?, finalizada = ? WHERE id = ?");
+            $consulta->bind_param("ssiisi", $nombre, $fecha_finalziar, $proyecto_id, $usuario_id, $finalizada, $this->id);
         }else{
             $bd = new BD();
             $nombre = $this->nombre;
             $usuario_id = $this->usuario_id;
             $fecha_finalziar = $this->fecha_finalziar;
             $proyecto_id = $this->proyecto_id;
+            $finalizada = $this->finalizada;
 
-            $consulta = $bd->conexion->prepare("INSERT INTO tareas (nombre, fecha_finalziar, proyecto_id, usuario_id) VALUES (?, ?, ?, ?)");
-            $consulta->bind_param("ssii", $nombre, $fecha_finalziar, $proyecto_id, $usuario_id);
+            $consulta = $bd->conexion->prepare("INSERT INTO tareas (nombre, fecha_finalziar, proyecto_id, usuario_id, finalizada) VALUES (?, ?, ?, ?, ?)");
+            $consulta->bind_param("ssiis", $nombre, $fecha_finalziar, $proyecto_id, $usuario_id, $finalizada);
         }
 
         if ($consulta->execute()) {

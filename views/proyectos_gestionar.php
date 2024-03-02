@@ -168,7 +168,6 @@
                             </thead>
                             <tbody>
                                 <?php
-                           
                                 $bd = new BD();
                                 $sql = $bd->conexion->query('select * from tareas where proyecto_id = ' . $_GET['proyecto_id']);
 
@@ -177,6 +176,21 @@
                                     $proyectosController->eliminar_tarea();
                                     $bd = new BD();
                                     $sql = $bd->conexion->query('select * from tareas where proyecto_id = ' . $_GET['proyecto_id']);
+                                }
+
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    if( !empty($_POST['btn_estatus'])){
+                                        $tarea = new Tarea();
+                                        $tarea->find($_POST['tarea_id']);
+                                        if($tarea->finalizada == 'TRUE'){
+                                            $tarea->finalizada = 'FALSE';
+                                        }else{
+                                            $tarea->finalizada = 'TRUE';
+                                        }
+                                        $tarea->save();
+                                        $bd = new BD();
+                                        $sql = $bd->conexion->query('select * from tareas where proyecto_id = ' . $_GET['proyecto_id']);
+                                    }
                                 }
 
                                 while ($datos = $sql->fetch_object()) {
@@ -191,7 +205,7 @@
                                         <td>
                                             <?= $datos->fecha_finalziar ?>
                                         </td>
-                                        <td>
+                                        <td style="display:flex; flex-wrap: nowrap; gap:10px;">
                                         <?php if ($_SESSION['user']['rol'] == 'ADMINISTRADOR' or $_SESSION['user']['rol'] == 'EDITOR') { ?>
                                             <a href="proyectos_gestionar.php?proyecto_id=<?= $proyecto->id ?>&tarea_id=<?= $datos->id ?>"
                                                 onclick="alert_eliminar(event)">
@@ -208,6 +222,17 @@
                                                 </div>
                                             </a>
                                             <?php } ?>
+                                            <form method="POST">
+                                            <div class="" style="display:flex; flex-wrap: nowrap;">
+                                            <input type="text" name="tarea_id" value="<?= $datos->id ?>" hidden>
+                                                    <button type="submit" class="btn <?php if($datos->finalizada == "FALSE"){?>  btn-warning <?php }?> <?php if($datos->finalizada == "TRUE"){?>  btn-primary<?php }?> " name="btn_estatus"
+                                                        value="ok">
+                                                        <?php if($datos->finalizada == "FALSE"){?> SIN COMPLETAR <?php }?> 
+                                                        <?php if($datos->finalizada == "TRUE"){?> COMPLETADA <?php }?> 
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        
                                         </td>
                                     </tr>
                                 <?php }
