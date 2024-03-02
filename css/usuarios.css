@@ -1,0 +1,13 @@
+.contenedor-tabla-datos{
+    width: 100%;
+    overflow: auto;
+}
+.contenedor-nuevo-usuario{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formulario-nuevo-usuario{
+    margin-top: 30px;
+    width: 100%;
+}

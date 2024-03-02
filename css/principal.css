@@ -8,5 +8,35 @@
 .contenedor-main{
     flex-grow: 1;
     width: 100%;
+    padding-left: 100px;
+    padding-right: 100px;
+    overflow: auto;
+}
 
+.titulo{
+    height: 150px;
+    margin-top: 20px;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+.titulo p{
+    font-size: 30px;
+}
+
+.aicon{
+    width: 25px;
+    cursor: pointer;
+    margin-right: 20px;
+    color: rgb(230, 230, 230);
+    margin-left: 15px;
+}
+
+@media (max-width: 1400px) {
+    .contenedor-main{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }

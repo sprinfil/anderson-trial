@@ -38,7 +38,11 @@
          <!--USUARIO-->
     <div class="contenedor-usuario">
             <?php
-                include '../controllers/CerrarSesionController.php'
+                include '../controllers/LoginController.php';
+                $loginController = new LoginController();
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    $loginController->cerrar_sesion();
+                }
             ?>
         <div>
                <!--CERRAR SESION-->

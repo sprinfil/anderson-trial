@@ -34,8 +34,12 @@
                     </div>
                     <!--IMPORTACIONES-->
                      <?php 
-                        include 'models/conexion.php';
+                        include 'models/BD.php';
                         include 'controllers/LoginController.php';
+                        $loginController = new LoginController();
+                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                            $loginController->login();
+                        }
                     ?>
                     <button type="submit" class="btn btn-primary" name="btn-login" value="ok">Iniciar Sesion</button>
                     </div>

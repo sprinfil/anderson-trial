@@ -9,7 +9,7 @@
     <script src="../vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/principal.css">
     <link rel="stylesheet" href="../css/usuarios.css">
-    <title>USUARIOS</title>
+    <title>PROYECTOS</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         <!--PRINCIPAL-->
         <div class="contenedor-main">
             <div class="titulo">
-                <p>USUARIOS</p>
+                <p>PROYECTOS</p>
             </div>
         </div>
 
