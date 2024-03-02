@@ -26,12 +26,14 @@
             <div class="titulo">
                 <p>PROYECTOS</p>
             </div>
+            <?php if ($_SESSION['user']['rol'] == 'ADMINISTRADOR' or $_SESSION['user']['rol'] == 'EDITOR') { ?>
             <!--NUEVO PROYECTO-->
             <a href="/anderson-trial/views/proyectos_create.php" class="boton-eliminar"><button type="button"
                     class="btn btn-primary" style="margin-left:10px;margin-top:30px;">
                     Nuevo Proyecto
                 </button>
             </a>
+            <?php } ?>
                         
             <!--TABLA DE DATOS-->
             <div class=" p-4 d-flex justify-content-center align-items-center contenedor-tabla-datos">
@@ -46,6 +48,7 @@
                     <tbody>
                         <?php
                         include '../models/BD.php';
+                        include '../models/Proyecto.php';
                         include '../controllers/ProyectosController.php';
                         $bd = new BD();
                         $sql = $bd->conexion->query('select * from proyectos');
@@ -67,11 +70,12 @@
                                 </td>
                                 <td>
                                 <div class="" style="display:flex; flex-wrap: nowrap;">
-                                <a href="proyectos_gestionar.php"
+                                <a href="proyectos_gestionar.php?proyecto_id=<?= $datos->id ?>"
                                             style="margin-right:10px;"><button type="button" class="btn btn-primary">
                                                 <i class="bi bi-pencil"></i> Ver Proyecto
                                             </button>
                                         </a>
+                                        <?php if ($_SESSION['user']['rol'] == 'ADMINISTRADOR' or $_SESSION['user']['rol'] == 'EDITOR') { ?>
                                         <a href="proyectos_update.php?id=<?= $datos->id ?>"
                                             style="margin-right:10px;"><button type="button" class="btn btn-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -81,6 +85,9 @@
                                                 </svg>
                                             </button>
                                         </a>
+                                        <?php }?>
+                                        
+                                        <?php if ($_SESSION['user']['rol'] == 'ADMINISTRADOR' or $_SESSION['user']['rol'] == 'EDITOR') { ?>
                                         <a href="proyectos.php?id=<?= $datos->id ?>" class="boton-eliminar" onclick="alert_eliminar(event)">
                                         <button
                                                 type="button" class="btn btn-danger">
@@ -91,6 +98,7 @@
                                                 </svg>
                                             </button>
                                         </a>
+                                        <?php }?>
                                     </div>
                                 </td>
                             </tr>

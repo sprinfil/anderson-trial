@@ -23,6 +23,7 @@
         <div class="contenedor-main">
             <div class="contenedor-tarjetas">
                 <!--USUARIOS-->
+                <?php if($_SESSION['user']['rol'] == 'ADMINISTRADOR') {?>
                 <a href="/anderson-trial/views/usuarios.php">
                     <div class="tarjeta">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -33,7 +34,7 @@
                     <p>USUARIOS</p>
                     </div>
                 </a>
-
+                <?php } ?>
                 <a href="/anderson-trial/views/proyectos.php">
                 <div class="tarjeta">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

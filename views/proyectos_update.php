@@ -28,7 +28,9 @@
                 <form class="formulario-nuevo-usuario" method="POST" id="modificarForm">
                 <?php
                     include '../models/BD.php';
+                    include '../models/Proyecto.php';
                     include '../controllers/ProyectosController.php';
+                    include '../controllers/HerramientasController.php';
 
                     //CREAR CONTROLLER Y MODEL 
                     $proyectoController = new ProyectosController();

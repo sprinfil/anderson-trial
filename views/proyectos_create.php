@@ -33,6 +33,8 @@
                     include '../models/BD.php';
                     //include '../controllers/usuarios/CrearUsuarioController.php';
                     include '../controllers/ProyectosController.php';
+                    include '../models/Proyecto.php';
+                    include '../controllers/HerramientasController.php';
 
                     $proyectoController = new ProyectosController();
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
