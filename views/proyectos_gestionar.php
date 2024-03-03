@@ -93,6 +93,19 @@
                         WHERE proyectos.id =' . $_GET['proyecto_id'] . '
                     ;'
                                     );
+                                   
+                                }
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    $bd = new BD();
+                                    $sql = $bd->conexion->query(
+                                        '  SELECT usuarios.*
+                        FROM usuarios
+                        JOIN participa ON usuarios.id = participa.usuario_id
+                        JOIN proyectos ON participa.proyecto_id = proyectos.id
+                        WHERE proyectos.id =' . $_GET['proyecto_id'] . '
+                    ;'
+                                    );
+                                   
                                 }
 
                                 if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -106,6 +119,7 @@
                         WHERE proyectos.id =' . $_GET['proyecto_id'] . '
                     ;'
                                     );
+                                    
                                 }
 
                                 while ($datos = $sql->fetch_object()) { ?>
@@ -190,6 +204,7 @@
                                         $tarea->save();
                                         $bd = new BD();
                                         $sql = $bd->conexion->query('select * from tareas where proyecto_id = ' . $_GET['proyecto_id']);
+                                        
                                     }
                                 }
 
