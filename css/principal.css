@@ -4,6 +4,7 @@
     height: 100vh;
     overflow: auto;
     padding-bottom: 80px;
+    overflow: auto;
 }
 .contenedor-main{
     flex-grow: 1;

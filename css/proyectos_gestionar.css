@@ -2,4 +2,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr; /* Dos columnas de igual anchura */
     gap: 20px;
+    overflow: auto;
+}
+
+@media (max-width: 944px) {
+    .contenedor-responsive{
+        display: grid;
+        grid-template-columns: 1fr; /* Dos columnas de igual anchura */
+        gap: 20px;
+    }
 }
